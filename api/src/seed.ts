@@ -44,7 +44,7 @@ const run = async () => {
       title: "MacBook Pro 16",
       description: "Powerful laptop in great condition",
       price: 1200,
-      image: "uploads/japtop.JPG",
+      image: "uploads/laptop.JPG",
       category: computers._id,
       user: user1._id,
     },
