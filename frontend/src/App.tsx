@@ -4,6 +4,7 @@ import CataloguePage from "./pages/CataloguePage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import NewItemPage from "./pages/NewItemPage";
+import ItemDetailPage from "./pages/ItemDetailPage";
 
 const App = () => {
   return (
@@ -12,18 +13,8 @@ const App = () => {
         <Route element={<Layout />}>
           <Route path="/" element={<CataloguePage />} />
           <Route path="/categories/:categoryId" element={<CataloguePage />} />
-          <Route
-            path="/items/:id"
-            element={<div className="text-xl">Item Details Page</div>}
-          />
-          <Route
-            path="/items/new"
-            element={
-              <div className="text-xl">
-                <NewItemPage />
-              </div>
-            }
-          />
+          <Route path="/items/new" element={<NewItemPage />} />
+          <Route path="/items/:id" element={<ItemDetailPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route
