@@ -17,7 +17,7 @@ app.use(categoriesRouter);
 app.use(itemsRouter);
 
 const run = async () => {
-  await mongoose.connect("mongodb://localhost/fleamarket");
+  await mongoose.connect("mongodb://localhost/requsaleshop");
   console.log("DB connected successfully");
 
   app.listen(port, () => {

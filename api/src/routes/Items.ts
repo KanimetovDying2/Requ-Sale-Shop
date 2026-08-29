@@ -54,7 +54,13 @@ itemsRouter.post(
 
       const { title, description, price, category } = req.body;
 
-      if (!title || !description || !price || !category) {
+      if (
+        !title ||
+        !description ||
+        price === undefined ||
+        price === "" ||
+        !category
+      ) {
         return res.status(400).send({ error: "All fields are required" });
       }
 
@@ -62,7 +68,7 @@ itemsRouter.post(
         title,
         description,
         price: parseFloat(price),
-        image: req.file.filename,
+        image: `uploads/${req.file.filename}`,
         category,
         user: req.user._id,
       });
@@ -93,7 +99,7 @@ itemsRouter.delete(
       if (item.user.toString() !== req.user._id.toString()) {
         return res
           .status(403)
-          .send({ error: "Forbidden: this is not you're item" });
+          .send({ error: "Forbidden: this is not your item" });
       }
 
       await Item.deleteOne({ _id: item._id });
