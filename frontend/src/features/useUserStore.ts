@@ -14,9 +14,25 @@ interface UserState {
   logout: () => void;
 }
 
+const getStoredUser = (): UserData | null => {
+  try {
+    const stored = localStorage.getItem("user");
+    if (!stored || stored === "undefined") return null;
+    return JSON.parse(stored);
+  } catch {
+    return null;
+  }
+};
+
+const getStoredToken = (): string | null => {
+  const token = localStorage.getItem("token");
+  if (!token || token === "undefined") return null;
+  return token;
+};
+
 export const useUserStore = create<UserState>((set) => ({
-  user: JSON.parse(localStorage.getItem("user") || "null"),
-  token: localStorage.getItem("token"),
+  user: getStoredUser(),
+  token: getStoredToken(),
 
   setUserData: (user, token) => {
     localStorage.setItem("user", JSON.stringify(user));

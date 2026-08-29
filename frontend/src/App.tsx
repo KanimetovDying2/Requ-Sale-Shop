@@ -1,6 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import CataloguePage from "./pages/CataloguePage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import NewItemPage from "./pages/NewItemPage";
 
 const App = () => {
   return (
@@ -15,16 +18,14 @@ const App = () => {
           />
           <Route
             path="/items/new"
-            element={<div className="text-xl">New Item Page</div>}
+            element={
+              <div className="text-xl">
+                <NewItemPage />
+              </div>
+            }
           />
-          <Route
-            path="/register"
-            element={<div className="text-xl">Register Page</div>}
-          />
-          <Route
-            path="/login"
-            element={<div className="text-xl">Login Page</div>}
-          />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route
             path="*"
             element={
