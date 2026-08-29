@@ -1,31 +1,14 @@
-// src/App.tsx
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
-import Navbar from "./components/Navbar";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
+import CataloguePage from "./pages/CataloguePage";
 
-const Layout = () => {
-  return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
-      <Navbar />
-      <main className="flex-1 max-w-7xl w-full mx-auto p-6">
-        <Outlet />
-      </main>
-    </div>
-  );
-};
-
-export function App() {
+const App = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
-          <Route
-            path="/"
-            element={<div className="text-xl">Main Page (Catalog)</div>}
-          />
-          <Route
-            path="/categories/:categoryId"
-            element={<div className="text-xl">Category Page</div>}
-          />
+          <Route path="/" element={<CataloguePage />} />
+          <Route path="/categories/:categoryId" element={<CataloguePage />} />
           <Route
             path="/items/:id"
             element={<div className="text-xl">Item Details Page</div>}
@@ -54,6 +37,6 @@ export function App() {
       </Routes>
     </BrowserRouter>
   );
-}
+};
 
 export default App;
